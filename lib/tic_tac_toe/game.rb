@@ -5,12 +5,16 @@ require_relative 'board'
 # Define a class for the game logic
 class Game
   # Initialize the game with a board and two players
-  def initialize(printer = :puts)
+  def initialize(printer = :puts, is_player_AI = false)
     @printer = printer
     @board = Board.new(printer)
     @x_player = Player.new('Player X', 'X', @board)
-    # @o_player = Player.new('Player O', 'O', @board)
-    @o_player = PlayerAi.new('PlayerAi O', 'O', @board)
+    @o_player = if is_player_AI
+                  PlayerAi.new('PlayerAi O', 'O', @board)
+                else
+                  Player.new('Player O', 'O', @board)
+                end
+
     @current_player = @x_player
   end
 
