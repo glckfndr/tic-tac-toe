@@ -5,7 +5,7 @@ require_relative 'board'
 # Define a class for the game logic
 class Game
   # Initialize the game with a board and two players
-  def initialize(printer)
+  def initialize(printer = :puts)
     @printer = printer
     @board = Board.new(printer)
     @x_player = Player.new('Player X', 'X', @board)
