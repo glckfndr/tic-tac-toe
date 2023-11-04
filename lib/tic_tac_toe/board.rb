@@ -1,7 +1,7 @@
 # Define a class for the board
 class Board
   # Initialize the board with an array of 9 empty strings
-  def initialize(printer)
+  def initialize(printer = :puts)
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     @printer = printer
   end
@@ -18,6 +18,8 @@ class Board
 
   # Check if a cell with index is free
   def free?(index)
+    raise 'Index must be positive!' if index.negative?
+
     (1..9).include?(@board[index])
   end
 
